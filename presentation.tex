@@ -1,0 +1,36 @@
+\documentclass{beamer}
+
+\usepackage[frenchb]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{datetime}
+\usepackage{eurosym}
+\usepackage[]{url}
+\usepackage[babel=true]{csquotes}
+
+\newdateformat{nombres}{\THEDAY-\THEMONTH-\THEYEAR}
+
+\title[Formation Git\_v1]{\today \\ Formation Picasoft : La gestion de version avec Git (niveau 1)}
+\titlegraphic{\includegraphics[scale=.05]{picasoft_logo.png}}
+\author[Duhautbout - Huet]{Thibaud {\sc Duhautbout} \\ Rémy {\sc Huet}}
+\institute[Picasoft]{Association Picasoft}
+\date\today
+
+\usetheme{AnnArbor}
+\usecolortheme{crane}
+
+\AtBeginSection[]
+{
+	\begin{frame}
+		\tableofcontents[currentsection, hideothersubsections]
+	\end{frame}
+}
+
+\begin{document}
+
+\begin{frame}
+	\titlepage 
+\end{frame}
+
+\end{document}
