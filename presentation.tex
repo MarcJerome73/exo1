@@ -1,4 +1,4 @@
-\documentclass{beamer}
+\documentclass[usepdftitle=false]{beamer}
 
 \usepackage[frenchb]{babel}
 \usepackage[T1]{fontenc}
@@ -8,6 +8,13 @@
 \usepackage{eurosym}
 \usepackage[]{url}
 \usepackage[babel=true]{csquotes}
+\hypersetup{
+pdfauthor={Thibaud Duhautbout - Rémy Huet},
+pdftitle={Formation Picaosft : La gestion de version avec Git},
+pdfsubject={Formation niveau 1 : les bases},
+pdfkeywords={git, gestion de version, VCS},
+pdfproducer={Latex},
+}
 
 \newdateformat{nombres}{\THEDAY-\THEMONTH-\THEYEAR}
 
@@ -31,6 +38,88 @@
 
 \begin{frame}
 	\titlepage 
+\end{frame}
+
+\section{Introduction}
+
+\begin{frame}{Pourquoi la gestion de version ?}
+\end{frame}
+
+\begin{frame}{Les différents logiciels de version}
+\end{frame}
+
+\begin{frame}{Petite histoire de git\ldots}
+\end{frame}
+
+\section{Concepts de base}
+
+\subsection{Configuration et initialisation}
+
+\begin{frame}{git config}
+	git config -- Configuration de l'identité de l'utilisateur
+
+	git init -- Initialisation du repo
+\end{frame}
+
+\subsection{\'Etat du repo local}
+
+\begin{frame}{git status}
+\end{frame}
+
+\subsection{Ajouter une version}
+
+\begin{frame}{git add -- reset -- commit}
+	Staging area etc
+\end{frame}
+
+\subsection{Voir l'historique}
+
+\begin{frame}{git log}
+\end{frame}
+
+\begin{frame}{git diff}
+\end{frame}
+
+\section{Concepts avancés}
+
+\subsection{Le HEAD}
+
+\begin{frame}{Le HEAD}
+\end{frame}
+
+\subsection{Enregistrer les modifications locales}
+
+\begin{frame}{git stash}
+\end{frame}
+
+\subsection{Changer de version}
+
+\begin{frame}{git checkout}
+\end{frame}
+
+\subsection{Annuler les modifications sur un fichier précis}
+
+\begin{frame}{git checkout -- file}
+\end{frame}
+
+\section{Les remotes}
+
+\subsection{Principe et application avec Gitlab}
+
+\begin{frame}{Gitlab}
+	Création d'un repo
+\end{frame}
+
+\subsection{Récupérer les ajouts distants}
+
+\begin{frame}{git clone -- git pull}
+	cloner le repo de la présentation (en HTTPS)
+\end{frame}
+
+\subsection{Envoyer des modifications}
+
+\begin{frame}{git push}
+	Sur repo perso
 \end{frame}
 
 \end{document}
