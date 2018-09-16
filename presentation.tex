@@ -8,6 +8,7 @@
 \usepackage{eurosym}
 \usepackage[]{url}
 \usepackage[babel=true]{csquotes}
+\usepackage{listings}
 \hypersetup{
 pdfauthor={Thibaud Duhautbout - Rémy Huet},
 pdftitle={Formation Picaosft : La gestion de version avec Git},
@@ -15,6 +16,9 @@ pdfsubject={Formation niveau 1 : les bases},
 pdfkeywords={git, gestion de version, VCS},
 pdfproducer={Latex},
 }
+
+\beamertemplatenavigationsymbolsempty
+\setbeamercolor{orangebox}{bg=orange,fg=black}
 
 \newdateformat{nombres}{\THEDAY-\THEMONTH-\THEYEAR}
 
@@ -91,17 +95,54 @@ Et plein d'autres !
 \item Possibilité de développements non-linéaires (branches)
 \item Popularité grandissante chez les développeurs (GitHub, GitLab)
 \end{itemize}
+\end{frame}
 
+\begin{frame}
+\begin{beamercolorbox}[sep=5pt,center,rounded=true,shadow=true]{orangebox}
+\Large
+\textsc{On passe à la partie pratique !}
+\end{beamercolorbox}
+\begin{center}
+\includegraphics[height=3cm]{./imgs/warning.jpg}
+\end{center}
+
+\centering
+Dans la suite, on considère que git est installé pour toutes les machines !
+
+\medskip
+
+\centering
+En cas de problème, n'hésitez pas à demander de l'aide aux gentils animateurs munis d'une pancarte \enquote{HELP} :)
+
+\begin{block}{}
+\centering
+On ouvre un terminal ou Git Bash !
+\end{block}
 \end{frame}
 
 \section{Concepts de base}
 
 \subsection{Configuration et initialisation}
 
-\begin{frame}{git config}
-	git config -- Configuration de l'identité de l'utilisateur
+\begin{frame}[fragile]{Configuration de git et du repo}
 
-	git init -- Initialisation du repo
+\begin{block}{Création d'un nouveau répertoire de travail}
+\verb+$ mkdir formation_git+ \\
+\verb+$ cd formation_git+
+\end{block}
+
+\begin{block}{Configuration de l'identité de l'utilisateur}
+Permet d'identifier l'auteur des mises à jour \\
+\verb+$ git config --global/local user.name "<prénom nom>"+ \\
+\verb+$ git config --global/local user.email "<adresse email>"+ \\
+\verb+global+ : configuration au niveau du système \\
+\verb+local+ : configuration au niveau du répertoire courant 
+\end{block}
+
+\begin{block}{Initialisation du repo git}
+\verb+$ git init+
+\end{block}
+
 \end{frame}
 
 \subsection{\'Etat du repo local}
