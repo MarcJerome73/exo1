@@ -6,7 +6,7 @@ beamer-build :
                 - make
         artifacts:
                 paths:
-                        - "*/*.pdf"
+                        - "*.pdf"
                 expire_in: 5 years
         tags:
                 - docker
