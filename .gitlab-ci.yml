@@ -1,0 +1,12 @@
+image: blang/latex
+
+beamer-build :
+        stage : build
+        script :
+                - make
+        artifacts:
+                paths:
+                        - "*/*.pdf"
+        expire_in: 5 years
+        tags:
+                - docker
