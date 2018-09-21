@@ -9,6 +9,8 @@
 \usepackage[]{url}
 \usepackage[babel=true]{csquotes}
 \usepackage{listings}
+\usepackage{fancyvrb}
+\usepackage{xcolor}
 \hypersetup{
 pdfauthor={Thibaud Duhautbout - Rémy Huet},
 pdftitle={Formation Picaosft : La gestion de version avec Git},
@@ -19,8 +21,17 @@ pdfproducer={Latex},
 
 \beamertemplatenavigationsymbolsempty
 \setbeamercolor{orangebox}{bg=orange,fg=black}
+\setbeamercolor{terminal}{bg=darkgray,fg=white}
 
 \newdateformat{nombres}{\THEDAY-\THEMONTH-\THEYEAR}
+
+% Dans le cas d'une compilation pour la présentation, on active les
+% pauses dans les slides (inutiles pour la version support à diffuser)
+\newcommand{\Pause}{%
+\ifdef{\Release}
+  {\pause}
+  {}
+}
 
 \title[Formation Git\_v1]{\today \\ Formation Picasoft : La gestion de version avec Git (niveau 1)}
 \titlegraphic{\includegraphics[scale=.1]{picasoft_logo.png}}
@@ -30,6 +41,8 @@ pdfproducer={Latex},
 
 \usetheme{AnnArbor}
 \usecolortheme{crane}
+
+\fvset{fontsize=\tiny,commandchars=\\\{\}}
 
 \AtBeginSection[]
 {
@@ -61,8 +74,7 @@ Pour les développeurs :
 \item centralisation des sources
 \item collaboration simplifiée
 \item possibilité de maintenir plusieurs versions
-\
-		tem ...
+\item ...
 \end{itemize}
 \end{frame}
 
@@ -142,15 +154,19 @@ Permet d'identifier l'auteur des mises à jour \\
 
 \begin{block}{Initialisation du repo git}
 \verb+$ git init+
+\verb+Dépôt Git vide initialisé dans /home/user/project/.git/+
 \end{block}
 
 \end{frame}
 
-\subsection{\'Etat du repo local}
+\subsection{\'Etat du répertoire local}
 
-\begin{frame}{git status}
+\begin{frame}[fragile]{Voir l'état du répertoire local}
+	\begin{block}{La commande}
+		\verb+$ git status+
+	\end{block}
 	\begin{block}{Utilité}
-		Permet de connaître à tout moment l'état d'un repo git :
+		Permet de connaître à tout moment l'état d'un répertoire git :
 		\begin{itemize}
 			\item La branche sur laquelle on se situe
 			\item La divergence avec un repo distant
@@ -164,22 +180,149 @@ Permet d'identifier l'auteur des mises à jour \\
 	\end{block}
 \end{frame}
 
+\begin{frame}[fragile]{\texttt{git status} à la loupe}
+	Pour le moment...
+
+	\begin{beamercolorbox}[rounded=true,shadow=true]{terminal}
+\begin{Verbatim}
+$ git status
+Sur la branche master
+
+Aucun commit
+
+rien à valider (créez/copiez des fichiers et utilisez "git add" pour les suivre)
+\end{Verbatim}
+	\end{beamercolorbox}
+
+	On va créer un fichier !
+
+	\begin{beamercolorbox}[rounded=true,shadow=true]{terminal}
+\begin{Verbatim}
+$ echo "J'apprends à utiliser git" > formation.txt
+\end{Verbatim}
+\Pause
+\begin{Verbatim}
+$ git status
+Sur la branche master
+
+Aucun commit
+
+Fichiers non suivis:
+  (utilisez "git add <fichier>..." pour inclure dans ce qui sera validé)
+
+	\textcolor{red}{formation.txt}
+
+aucune modification ajoutée à la validation mais des fichiers non suivis sont présents
+(utilisez "git add" pour les suivre)
+
+\end{Verbatim}
+\end{beamercolorbox}
+
+\end{frame}
+
 \subsection{Ajouter une version}
 
-\begin{frame}[fragile]{git add -- reset -- commit}
-	\begin{block}{Staging area}
-		La version actuelle des fichiers qui seront validés par git
+\begin{frame}{Un commit, c'est quoi ?}
+% Commencer par là peut-être ? Un commit c'est un ensemble de modifications par rapport à la version précédente ? Histoire de poser l'objectif avant la suite, sinon ça risque d'être flou le staging area
+\end{frame}
+
+\begin{frame}{Working Directory vs. Staging Area vs. Repository}
+	\begin{block}{Repository}
+		Le Repository correspond aux fichiers dans l'état de la dernière validation connue par git.
 	\end{block}
-	\begin{block}{Modifier le staging area}
+
+	\begin{block}{Working Directory}
+		Le Working Directory correspond à l'état actuel du répertoire git :
 		\begin{itemize}
-			\item Pour ajouter les modifications d'un fichier : \verb+$ git add <fihier(s)>+ (option \verb+-A+)
-			\item Pour enlever les modifications d'un fichier : \verb+$ git reset <fichier>+. {\it (ne change pas le contenu du fichier mais indique juste à git d'ignorer ses modifications)}
+			\item nouveaux fichiers pas encore ajoutés au Repository (fichiers non suivis)
+			\item fichiers modifiés depuis la dernière version
 		\end{itemize}
 	\end{block}
-	\begin{block}{Valider le staging area}
-		Pour valider les changements qui ont été ajoutés au staging area, on utilise la commande \verb+$ git commit+. Le commit doit contenir un message. Pour l'entrer directement, on utilise \verb+$ git commit -m "<message>"+ \\
-		Chaque commit possède un identifiant unique.
+
+	\begin{block}{Staging Area (ou Index)}
+		Zone intermédiaire entre le Working Directory et le Repository.
+		Elle contient les modifications apportées dans le Working Directory que git va ajouter au Repository.
 	\end{block}
+
+\end{frame}
+
+\begin{frame}[fragile]{Ajouter des modifications pour validation}
+	Ajouter les modifications d'un fichier pour validation : \\
+	\verb+$ git add <fichier(s)>+
+
+	\medskip
+
+	Ajouter toutes les modifications pour validation (tous les fichiers) : \\
+	\verb+$ git add -a+
+
+	\medskip
+
+	Enlever les modifications d'un fichier de la validation : \\
+	\verb+$ git reset <fichier>+ \\
+	{\it (ne change pas le contenu du fichier mais indique juste à git d'ignorer ses modifications pour la validation)}
+
+	% faire une jolie image avec un rond Working Directory et Staging Area avec une flèche dans un sens "git add" et une flèche "git reset"
+\end{frame}
+
+\begin{frame}[fragile]{Ajouter des modifications pour validation}
+	\begin{beamercolorbox}[rounded=true,shadow=true]{terminal}
+\begin{Verbatim}
+$ git status
+Sur la branche master
+Aucun commit
+Fichiers non suivis:
+
+	\textcolor{red}{formation.txt}
+\end{Verbatim}
+\Pause
+\begin{Verbatim}
+$ git add formation.txt
+\end{Verbatim}
+\Pause
+\begin{Verbatim}
+$ git status
+Sur la branche master
+
+Aucun commit
+
+Modifications qui seront validées :
+  (utilisez "git rm --cached <fichier>..." pour désindexer)
+
+	\textcolor{green}{nouveau fichier : formation.txt}
+\end{Verbatim}
+\Pause
+\begin{Verbatim}
+$ git reset formation.txt
+\end{Verbatim}
+\Pause
+\begin{Verbatim}
+$ git status
+Sur la branche master
+Aucun commit
+Fichiers non suivis:
+
+	\textcolor{red}{formation.txt}
+
+$ git add formation.txt
+\end{Verbatim}
+	\end{beamercolorbox}
+\end{frame}
+
+\begin{frame}[fragile]{Valider des modifications}
+
+	\begin{block}{Valider le staging area}
+		Valider les changements qui ont été ajoutés au staging area :\\
+		\verb+$ git commit+.
+
+		\medskip
+
+		Le commit doit contenir un message. Pour l'entrer directement : \\
+		 \verb+$ git commit -m "<message>"+ \\
+	\end{block}
+\end{frame}
+
+\begin{frame}{Dissection d'un commit}
+		Chaque commit possède un identifiant unique.
 \end{frame}
 
 \subsection{Voir l'historique}
