@@ -61,7 +61,8 @@ Pour les développeurs :
 \item centralisation des sources
 \item collaboration simplifiée
 \item possibilité de maintenir plusieurs versions
-\item ...
+\
+		tem ...
 \end{itemize}
 \end{frame}
 
@@ -165,8 +166,20 @@ Permet d'identifier l'auteur des mises à jour \\
 
 \subsection{Ajouter une version}
 
-\begin{frame}{git add -- reset -- commit}
-	Staging area etc
+\begin{frame}[fragile]{git add -- reset -- commit}
+	\begin{block}{Staging area}
+		La version actuelle des fichiers qui seront validés par git
+	\end{block}
+	\begin{block}{Modifier le staging area}
+		\begin{itemize}
+			\item Pour ajouter les modifications d'un fichier : \verb+$ git add <fihier(s)>+ (option \verb+-A+)
+			\item Pour enlever les modifications d'un fichier : \verb+$ git reset <fichier>+. {\it (ne change pas le contenu du fichier mais indique juste à git d'ignorer ses modifications)}
+		\end{itemize}
+	\end{block}
+	\begin{block}{Valider le staging area}
+		Pour valider les changements qui ont été ajoutés au staging area, on utilise la commande \verb+$ git commit+. Le commit doit contenir un message. Pour l'entrer directement, on utilise \verb+$ git commit -m "<message>"+ \\
+		Chaque commit possède un identifiant unique.
+	\end{block}
 \end{frame}
 
 \subsection{Voir l'historique}
