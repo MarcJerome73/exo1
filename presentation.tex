@@ -24,6 +24,7 @@ pdfproducer={Latex},
 \setbeamercolor{terminal}{bg=darkgray,fg=white}
 
 \newdateformat{nombres}{\THEDAY-\THEMONTH-\THEYEAR}
+\def\seplength{.5\topsep}
 
 % Dans le cas d'une compilation pour la présentation, on active les
 % pauses dans les slides (inutiles pour la version support à diffuser)
@@ -54,7 +55,7 @@ pdfproducer={Latex},
 \begin{document}
 
 \begin{frame}
-	\titlepage 
+	\titlepage
 \end{frame}
 
 \section{Introduction}
@@ -139,23 +140,38 @@ On ouvre un terminal ou Git Bash !
 
 \begin{frame}[fragile]{Configuration de git et du repo}
 
-\begin{block}{Création d'un nouveau répertoire de travail}
-\verb+$ mkdir formation_git+ \\
-\verb+$ cd formation_git+
-\end{block}
+Création d'un nouveau répertoire de travail
+\begin{beamercolorbox}[rounded=true,shadow=true]{terminal}
+\vspace{-\seplength}
+\begin{Verbatim}
+$ mkdir formation_git
+$ cd formation_git
+\end{Verbatim}
+\end{beamercolorbox}
 
-\begin{block}{Configuration de l'identité de l'utilisateur}
-Permet d'identifier l'auteur des mises à jour \\
-\verb+$ git config --global/local user.name "<prénom nom>"+ \\
-\verb+$ git config --global/local user.email "<adresse email>"+ \\
-\verb+global+ : configuration au niveau du système \\
-\verb+local+ : configuration au niveau du répertoire courant 
-\end{block}
+Configuration de l'identité de l'utilisateur :
+\begin{itemize}
+\item Permet d'identifier l'auteur des mises à jour \\
+\item \verb+global+ : configuration au niveau du système \\
+\item \verb+local+ : configuration au niveau du répertoire courant
+\end{itemize}
 
-\begin{block}{Initialisation du repo git}
-\verb+$ git init+
-\verb+Dépôt Git vide initialisé dans /home/user/project/.git/+
-\end{block}
+\begin{beamercolorbox}[rounded=true,shadow=true]{terminal}
+\vspace{-\seplength}
+\begin{Verbatim}
+$ git config --global/local user.name "<prénom nom>"
+$ git config --global/local user.email "<adresse email>"
+\end{Verbatim}
+\end{beamercolorbox}
+
+Initialisation du repo git :
+\begin{beamercolorbox}[rounded=true,shadow=true]{terminal}
+\vspace{-\seplength}
+\begin{Verbatim}
+$ git init
+Dépôt Git vide initialisé dans /home/user/project/.git/
+\end{Verbatim}
+\end{beamercolorbox}
 
 \end{frame}
 
@@ -184,6 +200,7 @@ Permet d'identifier l'auteur des mises à jour \\
 	Pour le moment...
 
 	\begin{beamercolorbox}[rounded=true,shadow=true]{terminal}
+\vspace{-\seplength}
 \begin{Verbatim}
 $ git status
 Sur la branche master
@@ -197,10 +214,12 @@ rien à valider (créez/copiez des fichiers et utilisez "git add" pour les suivr
 	On va créer un fichier !
 
 	\begin{beamercolorbox}[rounded=true,shadow=true]{terminal}
+\vspace{-\seplength}
 \begin{Verbatim}
 $ echo "J'apprends à utiliser git" > formation.txt
 \end{Verbatim}
 \Pause
+\vspace{-\seplength}
 \begin{Verbatim}
 $ git status
 Sur la branche master
@@ -223,7 +242,22 @@ aucune modification ajoutée à la validation mais des fichiers non suivis sont 
 \subsection{Ajouter une version}
 
 \begin{frame}{Un commit, c'est quoi ?}
-% Commencer par là peut-être ? Un commit c'est un ensemble de modifications par rapport à la version précédente ? Histoire de poser l'objectif avant la suite, sinon ça risque d'être flou le staging area
+
+Pour faire court :
+\begin{itemize}
+\item Commit = Validation
+\item Point de sauvegarde
+\item Ensemble de \textbf{modifications} depuis le dernier commit
+\end{itemize}
+
+\bigskip
+
+\`A quoi ça sert ?
+\begin{itemize}
+\item Les commits se suivent
+\item Sauvegarde incrémentale
+\item Possibilité de revenir à une version donnée
+\end{itemize}
 \end{frame}
 
 \begin{frame}{Working Directory vs. Staging Area vs. Repository}
@@ -264,8 +298,9 @@ aucune modification ajoutée à la validation mais des fichiers non suivis sont 
 	% faire une jolie image avec un rond Working Directory et Staging Area avec une flèche dans un sens "git add" et une flèche "git reset"
 \end{frame}
 
-\begin{frame}[fragile]{Ajouter des modifications pour validation}
-	\begin{beamercolorbox}[rounded=true,shadow=true]{terminal}
+\begin{frame}[fragile]
+\begin{beamercolorbox}[rounded=true,shadow=true]{terminal}
+\vspace{-\seplength}
 \begin{Verbatim}
 $ git status
 Sur la branche master
@@ -275,10 +310,12 @@ Fichiers non suivis:
 	\textcolor{red}{formation.txt}
 \end{Verbatim}
 \Pause
+\vspace{-\seplength}
 \begin{Verbatim}
 $ git add formation.txt
 \end{Verbatim}
 \Pause
+\vspace{-\seplength}
 \begin{Verbatim}
 $ git status
 Sur la branche master
@@ -291,10 +328,12 @@ Modifications qui seront validées :
 	\textcolor{green}{nouveau fichier : formation.txt}
 \end{Verbatim}
 \Pause
+\vspace{-\seplength}
 \begin{Verbatim}
 $ git reset formation.txt
 \end{Verbatim}
 \Pause
+\vspace{-\seplength}
 \begin{Verbatim}
 $ git status
 Sur la branche master
@@ -305,20 +344,32 @@ Fichiers non suivis:
 
 $ git add formation.txt
 \end{Verbatim}
-	\end{beamercolorbox}
+\end{beamercolorbox}
 \end{frame}
 
-\begin{frame}[fragile]{Valider des modifications}
+\begin{frame}[fragile]{Valider les modifications}
 
-	\begin{block}{Valider le staging area}
-		Valider les changements qui ont été ajoutés au staging area :\\
-		\verb+$ git commit+.
+Valider les changements qui ont été ajoutés au staging area :\\
+\verb+$ git commit+.
 
-		\medskip
+\medskip
 
-		Le commit doit contenir un message. Pour l'entrer directement : \\
-		 \verb+$ git commit -m "<message>"+ \\
-	\end{block}
+Le commit doit contenir un message. Pour l'entrer directement : \\
+\verb+$ git commit -m "<message>"+ \\
+
+\bigskip
+
+\begin{beamercolorbox}[rounded=true,shadow=true]{terminal}
+\vspace{-\seplength}
+\begin{Verbatim}
+$ git commit -m "Ajout du premier fichier"
+[master (commit racine) 6b6799b] Ajout du premier fichier
+ 1 file changed, 1 insertion(+)
+ create mode 100644 formation.txt
+\end{Verbatim}
+\end{beamercolorbox}
+
+
 \end{frame}
 
 \begin{frame}{Dissection d'un commit}
