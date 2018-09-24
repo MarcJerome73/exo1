@@ -287,7 +287,7 @@ Pour faire court :
 	\medskip
 
 	Ajouter toutes les modifications pour validation (tous les fichiers) : \\
-	\verb+$ git add -a+
+	\verb+$ git add -A+
 
 	\medskip
 
@@ -373,12 +373,39 @@ $ git commit -m "Ajout du premier fichier"
 \end{frame}
 
 \begin{frame}{Dissection d'un commit}
-		Chaque commit possède un identifiant unique.
+	\begin{block}{À propos du commit}
+		\begin{itemize}
+			\item Chaque commit possède un identifiant unique;
+			\item Un commit est asocié à une unique personne;
+			\item L'historique des commits est incrémental. Tout commit (excepté le premier) a un commit "père"
+			\item Un commit correspond à une version figée du projet;
+		\end{itemize}
+	\end{block}
 \end{frame}
 
 \subsection{Voir l'historique}
 
-\begin{frame}{git log}
+\begin{frame}[fragile]{git log}
+	Afficher l'historique des commits
+	\begin{beamercolorbox}[rounded=true,shadow=true]{terminal}
+		\vspace{-\seplength}
+		\begin{Verbatim}
+			$ git log
+			\textcolor{yellow}{commit 2487fdd243542146f15a8e6bb00a94a39117ea1b (}{\bf \textcolor{cyan}{HEAD -> }\textcolor{green}{master}} \textcolor{yellow}{)}
+			Author: huetremy <remy.huet@etu.utc.fr>
+			Date:   Mon Sep 24 09:54:14 2018 +0200
+
+    				Ajout du premier fichier
+		\end{Verbatim}
+	\end{beamercolorbox}
+	\Pause
+	On peut voir ici : \Pause
+	\begin{itemize}
+		\item L'identifiant unique du commit \Pause
+		\item L'auteur (et son mail) \Pause
+		\item La date du commit \Pause
+		\item Le message qui a été mis lors du commit
+	\end{itemize}
 \end{frame}
 
 \begin{frame}{git diff}
