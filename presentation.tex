@@ -390,12 +390,12 @@ $ git commit -m "Ajout du premier fichier"
 	\begin{beamercolorbox}[rounded=true,shadow=true]{terminal}
 		\vspace{-\seplength}
 		\begin{Verbatim}
-			$ git log
-			\textcolor{yellow}{commit 2487fdd243542146f15a8e6bb00a94a39117ea1b (}{\bf \textcolor{cyan}{HEAD -> }\textcolor{green}{master}} \textcolor{yellow}{)}
-			Author: huetremy <remy.huet@etu.utc.fr>
-			Date:   Mon Sep 24 09:54:14 2018 +0200
+$ git log
+\textcolor{yellow}{commit 2487fdd243542146f15a8e6bb00a94a39117ea1b (}{\bf \textcolor{cyan}{HEAD -> }\textcolor{green}{master}} \textcolor{yellow}{)}
+Author: huetremy <remy.huet@etu.utc.fr>
+Date:   Mon Sep 24 09:54:14 2018 +0200
 
-    				Ajout du premier fichier
+    	Ajout du premier fichier
 		\end{Verbatim}
 	\end{beamercolorbox}
 	\Pause
@@ -408,7 +408,83 @@ $ git commit -m "Ajout du premier fichier"
 	\end{itemize}
 \end{frame}
 
-\begin{frame}{git diff}
+\begin{frame}[fragile]{git diff}
+	Permet de voir les modifications apportées au repo :
+	\begin{itemize}
+		\item Depuis l'état du staging area : \verb+$ git diff+;
+		\item Depuis le derier commit : \verb+$ git diff HEAD+;
+		\item Depuis un commit quelconque : \verb+$ git diff <id_commit>+;
+		\item Entre deux commits quelconques : \verb+$ git diff <id_commit_départ> <id_commit_arrivée>+.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+	\begin{beamercolorbox}[rounded=true,shadow=true]{terminal}
+		\begin{Verbatim}
+$ echo "J'ajoute une ligne à mon fichier" >> formation.txt \Pause
+
+$ git diff
+
+{\bf diff --git a/formation.txt b/formation.txt
+index 951923e..bbbb145 100644
+--- a/formation.txt
++++ b/formation.txt}
+\textcolor{cyan}{@@ -1 +1,2 @@}
+ J'apprends à utiliser git
+\textcolor{olive}{+J'ajoute une ligne à mon fichier} \Pause
+
+$ git add formation.txt \Pause
+
+$ git diff \Pause
+
+$ git diff HEAD
+
+{\bf diff --git a/formation.txt b/formation.txt
+index 951923e..bbbb145 100644
+--- a/formation.txt
++++ b/formation.txt}
+\textcolor{cyan}{@@ -1 +1,2 @@}
+ J'apprends à utiliser git
+\textcolor{olive}{+J'ajoute une ligne à mon fichier} \Pause
+
+$ git commit -m "Second commit"
+
+[master e788cc0] Second commit
+ 1 file changed, 1 insertion(+)
+
+\end{Verbatim}
+	\end{beamercolorbox}
+\end{frame}
+
+\begin{frame}[fragile]
+	\begin{beamercolorbox}[rounded=true,shadow=true]{terminal}
+		\begin{Verbatim}
+$ git log
+
+\textcolor{yellow}{commit e788cc09da2de56b9dd530a78c2f610b94bea356 (}{\bf\textcolor{cyan}{HEAD ->}\textcolor{green}{ master}}\textcolor{yellow}{)}
+Author: huetremy <remy.huet@etu.utc.fr>
+Date:   Mon Sep 24 11:39:21 2018 +0200
+
+    Second commit
+
+\textcolor{yellow}{commit 2487fdd243542146f15a8e6bb00a94a39117ea1b}
+Author: huetremy <remy.huet@etu.utc.fr>
+Date:   Mon Sep 24 09:54:14 2018 +0200
+
+    Ajout du premier fichier \Pause
+
+$ git diff 2487d e788c
+
+{\bf diff --git a/formation.txt b/formation.txt
+index 951923e..bbbb145 100644
+--- a/formation.txt
++++ b/formation.txt}
+\textcolor{cyan}{@@ -1 +1,2 @@}
+ J'apprends à utiliser git
+\textcolor{olive}{+J'ajoute une ligne à mon fichier}
+    		
+		\end{Verbatim}
+	\end{beamercolorbox}
 \end{frame}
 
 \section{Concepts avancés}
