@@ -514,13 +514,40 @@ index 951923e..bbbb145 100644
 \subsection{Principe et application avec Gitlab}
 
 \begin{frame}{Gitlab}
-	Création d'un repo
+	\begin{block}{Principe}
+		Un repo git en ligne pour sauvegarder et partager le code. Les deux plus connus sont github et gitlab.
+	\end{block}
+	\begin{block}{Application}
+		Création d'un repo sur gitlab
+	\end{block}
 \end{frame}
 
 \subsection{Récupérer les ajouts distants}
 
-\begin{frame}{git clone -- git pull}
-	cloner le repo de la présentation (en HTTPS)
+\begin{frame}[fragile]{git clone -- git pull}
+	Récupération du repo de la présentation :
+	\begin{beamercolorbox}[rounded=true,shadow=true]{terminal}
+		\begin{Verbatim}
+$ git clone https://gitlab.utc.fr/picasoft/formations/A18/git-v1 \Pause
+Clonage dans 'git-v1'...
+Username for 'https://gitlab.utc.fr':\Pause{}huetremy \Pause
+Password for 'https://huetremy@gitlab.utc.fr': \Pause
+warning: redirection vers https://gitlab.utc.fr/picasoft/formations/A18/git-v1.git/
+remote: Counting objects: 74, done.
+remote: Compressing objects: 100% (55/55), done.
+remote: Total 74 (delta 35), reused 40 (delta 16)
+Dépaquetage des objets: 100% (74/74), fait.\Pause
+
+$ cd git-v1 \Pause
+
+$ git status
+
+Sur la branche master
+Votre branche est à jour avec 'origin/master'.
+
+rien à valider, la copie de travail est propre
+		\end{Verbatim}
+	\end{beamercolorbox}
 \end{frame}
 
 \subsection{Envoyer des modifications}
