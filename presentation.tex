@@ -529,7 +529,7 @@ $ git stash
 Copie de travail et état de l'index sauvegardés dans WIP on master: 9a7302c Second commit
 \Pause
 $ git status
-Sur la branche master 
+Sur la branche master
 rien à valider, la copie de travail est propre
 \end{Verbatim}
 	\end{beamercolorbox}
@@ -581,7 +581,7 @@ $ git commit -m "travail en cours"
 	\begin{beamercolorbox}[rounded=true,shadow=true]{terminal}
 \vspace{-\seplength}
 \begin{Verbatim}
-$ git log
+$ git log --graph --all
 * \textcolor{yellow}{commit 2624c90dbc8f28be29f7cbd8ea497eaef8832f44} (\textcolor{cyan}{HEAD} -> \textcolor{green}{master})
 \textcolor{red}{|} Author: Thibaud Duhautbout <thibaud@duhautbout.ovh>
 \textcolor{red}{|} Date:   Sun Sep 30 20:38:59 2018 +0200
@@ -609,6 +609,7 @@ $ git log
 	\verb+$ git checkout <sha commit>+ : rétablit le HEAD au commit indiqué
 
 	\begin{beamercolorbox}[rounded=true,shadow=true]{terminal}
+\vspace{-\seplength}
 \begin{Verbatim}
 $ git checkout 9a7302c06628ef69a5e1c9cebc2a1c2904e7d41f \Pause
 Note : extraction de '9a7302c06628ef69a5e1c9cebc2a1c2904e7d41f'.
@@ -637,12 +638,13 @@ rien à valider, la copie de travail est propre
 	\end{block}
 	\Pause
 	\begin{beamercolorbox}[rounded=true,shadow=true]{terminal}
+\vspace{-\seplength}
 \begin{Verbatim}
 $ git checkout master
 La position précédente de HEAD était sur 9a7302c Second commit
 Basculement sur la branche 'master'
 \Pause
-$ git log --graph --all --decorate
+$ git log --graph --all
 * \textcolor{yellow}{commit 2624c90dbc8f28be29f7cbd8ea497eaef8832f44} (\textcolor{cyan}{HEAD} -> \textcolor{green}{master})
 \textcolor{red}{|} Author: Thibaud Duhautbout <thibaud@duhautbout.ovh>
 \textcolor{red}{|} Date:   Sun Sep 30 20:38:59 2018 +0200
@@ -669,19 +671,60 @@ travail en cours...
 \subsection{Annuler les modifications sur un fichier précis}
 
 \begin{frame}[fragile]{Annuler les modifications sur un fichier particulier}
+
+\begin{beamercolorbox}[rounded=true,shadow=true]{terminal}
+\vspace{-\seplength}
+\begin{Verbatim}
+$ echo "ligne qui casse tout..." >> formation.txt
+\end{Verbatim}
+\end{beamercolorbox}
+
+\Pause
+
+\bigskip
+
 	\begin{block}{}
 		\enquote{Je sais pas ce que j'ai fait, mais ce fichier il était bien avant que j'y touche... On peut revenir en arrière non ?}
 	\end{block}
 
-	\verb+$ git checkout -- <nom du fichier>+ : rétablit le fichier indiqué dans la version du dernier commit
+\bigskip
 
+\Pause
+
+	\verb+$ git checkout -- <nom du fichier>+ : rétablit le fichier indiqué dans la version du dernier commit (\bf{les modifications locales seront perdues !})
+
+\end{frame}
+
+\begin{frame}[fragile]{Annuler les modifications sur un fichier précis}
 	\begin{beamercolorbox}[rounded=true,shadow=true]{terminal}
 \begin{Verbatim}
-$ git diff fichier_casse
-
-$ git checkout -- fichier_casse
-
 $ git status
+Sur la branche master
+Modifications qui ne seront pas validées :
+
+	\textcolor{red}{modifié :         formation.txt}
+\Pause
+$ git diff fichier_casse
+diff --git a/formation.txt b/formation.txt
+index b1e9ea1..06fc038 100644
+--- a/formation.txt
++++ b/formation.txt
+@@ -1,3 +1,4 @@
+ J'apprends à utiliser git
+ J’ajoute une ligne à mon fichier
+ travail en cours...
+\textcolor{myGreen}{+ligne qui casse tout}
+\Pause
+$ git checkout -- formation.txt
+\Pause
+$ git status
+Sur la branche master
+rien à valider, la copie de travail est propre
+\Pause
+$ cat formation.txt
+J'apprends à utiliser git
+J’ajoute une ligne à mon fichier
+travail en cours...
 \end{Verbatim}
 	\end{beamercolorbox}
 \end{frame}
@@ -771,7 +814,7 @@ $ git commit -m "Ajout fichier text.txt"\Pause
 ...
 $ git push\Pause
 Username for 'https://gitlab.utc.fr':\Pause huetremy
-Password for 'https://huetremy@gitlab.utc.fr':\Pause 
+Password for 'https://huetremy@gitlab.utc.fr':\Pause
 warning: redirection vers https://gitlab.utc.fr/huetremy/formation-git.git/
 Énumération des objets: 5, fait.
 Décompte des objets: 100% (5/5), fait.
