@@ -650,8 +650,25 @@ Fast-forward
 
 \subsection{Envoyer des modifications}
 
-\begin{frame}{git push}
-	Sur repo perso
+\begin{frame}[fragile]{git push}
+	\begin{block}{}
+		\enquote{Dis, comment je peux envoyer mes modifications vers la remote ? \\ -- Facile ! Tu utilises git push !}
+	\end{block}
+	\begin{beamercolorbox}[rounded=true,shadow=true]{terminal}
+		\begin{Verbatim}
+$ cd \Pause
+$ cd Documents \Pause
+$ git clone https://gitlab.utc.fr/mon_login/fomation-git
+...
+$ cd formation-git
+$ echo "Hello World !" > text.txt
+$ git add -A
+$ git commit -m "Ajout fichier text.txt"
+...
+$ git push
+
+		\end{Verbatim}
+	\end{beamercolorbox}
 \end{frame}
 
 \end{document}
