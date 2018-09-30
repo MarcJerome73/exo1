@@ -23,6 +23,8 @@ pdfproducer={Latex},
 \setbeamercolor{orangebox}{bg=orange,fg=black}
 \setbeamercolor{terminal}{bg=darkgray,fg=white}
 
+\definecolor{myGreen}{HTML}{0f8e1d}
+
 \newdateformat{nombres}{\THEDAY-\THEMONTH-\THEYEAR}
 \def\seplength{.3\topsep}
 
@@ -432,7 +434,7 @@ index 951923e..bbbb145 100644
 +++ b/formation.txt}
 \textcolor{cyan}{@@ -1 +1,2 @@}
  J'apprends à utiliser git
-\textcolor{olive}{+J'ajoute une ligne à mon fichier} \Pause
+\textcolor{myGreen}{+J'ajoute une ligne à mon fichier} \Pause
 
 $ git add formation.txt \Pause
 
@@ -446,7 +448,7 @@ index 951923e..bbbb145 100644
 +++ b/formation.txt}
 \textcolor{cyan}{@@ -1 +1,2 @@}
  J'apprends à utiliser git
-\textcolor{olive}{+J'ajoute une ligne à mon fichier} \Pause
+\textcolor{myGreen}{+J'ajoute une ligne à mon fichier} \Pause
 
 $ git commit -m "Second commit"
 
@@ -483,7 +485,7 @@ index 951923e..bbbb145 100644
 +++ b/formation.txt}
 \textcolor{cyan}{@@ -1 +1,2 @@}
  J'apprends à utiliser git
-\textcolor{olive}{+J'ajoute une ligne à mon fichier}
+\textcolor{myGreen}{+J'ajoute une ligne à mon fichier}
     		
 		\end{Verbatim}
 	\end{beamercolorbox}
@@ -744,7 +746,7 @@ Depuis https://gitlab.utc.fr/picasoft/formations/a18/git-v1
    00938d6..3f31ae0  master     -> origin/master
 Mise à jour 00938d6..3f31ae0
 Fast-forward
- presentation.tex | 29 \textcolor{olive}{++++++++++++++++++++++++++++}\textcolor{red}{-}
+ presentation.tex | 29 \textcolor{myGreen}{++++++++++++++++++++++++++++}\textcolor{red}{-}
  1 file changed, 28 insertions(+), 1 deletion(-)
 	\end{Verbatim}
 	\end{beamercolorbox}
