@@ -550,6 +550,29 @@ rien à valider, la copie de travail est propre
 	\end{beamercolorbox}
 \end{frame}
 
+\begin{frame}[fragile]{Restaurer les modifications enregistrées}
+	\begin{block}{Mise en situation (bis)}
+		\begin{itemize}
+			\item \enquote{Eeeeeh mais je fais comment maintenant ?}
+			\item \enquote{Tranquille, git stash pop !}
+		\end{itemize}
+	\end{block}
+
+	\verb+$ git stash pop+ : applique les modifications enregistrées par le \textbf{dernier} \verb+stash+ sur le working directory (attention aux conflits en cas de modifications qui se recoupent !)
+	\begin{beamercolorbox}[rounded=true,shadow=true]{terminal}
+\begin{Verbatim}
+$ git stash pop
+Sur la branche master
+Modifications qui ne seront pas validées :
+
+	modifié :         \textcolor{red}{presentation.tex}
+
+aucune modification n'a été ajoutée à la validation (utilisez "git add" ou "git commit -a")
+refs/stash@{0} supprimé (f3d4c84a8b3efc512785b30413dd4c3135e346b3)
+\end{Verbatim}
+	\end{beamercolorbox}
+\end{frame}
+
 \subsection{Changer de version}
 
 \begin{frame}{git checkout}
