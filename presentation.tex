@@ -520,7 +520,34 @@ index 951923e..bbbb145 100644
 
 \subsection{Enregistrer les modifications locales}
 
-\begin{frame}{git stash}
+\begin{frame}[fragile]{Enregistrer les modifications locales}
+	\begin{block}{Mise en situation}
+	\begin{itemize}
+		\item \enquote{Tiens, tu pourrais m'envoyer le rapport ?}
+		\item \enquote{Euh, en fait je travaille dessus et j'ai changé tout l'ordre donc ça a pas trop de sens...}
+		\item \enquote{Bah fais un git stash !}
+	\end{itemize}
+	\end{block}
+
+	\verb+$ git stash+ : enregistre les modifications locales et restaure le working directory à l'état du dernier commit.
+
+	% TODO exemple à modifier pour suivre l'exemple global de la présentation
+	\begin{beamercolorbox}[rounded=true,shadow=true]{terminal}
+	\begin{Verbatim}
+$ git status
+Sur la branche master 
+Modifications qui ne seront pas validées :
+
+	modifié :         \textcolor{red}{presentation.tex}
+
+$ git stash
+Copie de travail et état de l'index sauvegardés dans WIP on local: 00938d6 Ajout diapo HEAD
+
+$ git status
+Sur la branche local
+rien à valider, la copie de travail est propre
+\end{Verbatim}
+	\end{beamercolorbox}
 \end{frame}
 
 \subsection{Changer de version}
