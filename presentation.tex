@@ -24,7 +24,7 @@ pdfproducer={Latex},
 \setbeamercolor{terminal}{bg=darkgray,fg=white}
 
 \newdateformat{nombres}{\THEDAY-\THEMONTH-\THEYEAR}
-\def\seplength{.5\topsep}
+\def\seplength{.3\topsep}
 
 % Dans le cas d'une compilation pour la présentation, on active les
 % pauses dans les slides (inutiles pour la version support à diffuser)
@@ -420,6 +420,7 @@ Date:   Mon Sep 24 09:54:14 2018 +0200
 
 \begin{frame}[fragile]
 	\begin{beamercolorbox}[rounded=true,shadow=true]{terminal}
+\vspace{-\seplength}
 		\begin{Verbatim}
 $ echo "J'ajoute une ligne à mon fichier" >> formation.txt \Pause
 
@@ -458,6 +459,7 @@ $ git commit -m "Second commit"
 
 \begin{frame}[fragile]
 	\begin{beamercolorbox}[rounded=true,shadow=true]{terminal}
+\vspace{-\seplength}
 		\begin{Verbatim}
 $ git log
 
@@ -492,28 +494,40 @@ index 951923e..bbbb145 100644
 \subsection{Enregistrer les modifications locales}
 
 \begin{frame}[fragile]{Enregistrer les modifications locales}
+
+	\begin{beamercolorbox}[rounded=true,shadow=true]{terminal}
+\vspace{-\seplength}
+\begin{Verbatim}
+$ echo "travail en cours..." >> formation.txt
+\end{Verbatim}
+	\end{beamercolorbox}
+
+	\Pause
+
 	\begin{block}{}
 		-- \enquote{Tiens, tu pourrais m'envoyer le rapport ?} \\
+		\Pause
 		-- \enquote{Euh, en fait je travaille dessus et j'ai changé tout l'ordre donc ça a pas trop de sens...} \\
+		\Pause
 		-- \enquote{Bah fais un git stash !}
 	\end{block}
 
 	\verb+$ git stash+ : enregistre les modifications locales et restaure le working directory à l'état du dernier commit.
 
-	% TODO exemple à modifier pour suivre l'exemple global de la présentation
 	\begin{beamercolorbox}[rounded=true,shadow=true]{terminal}
+\vspace{-\seplength}
 	\begin{Verbatim}
 $ git status
 Sur la branche master
 Modifications qui ne seront pas validées :
 
-	modifié :         \textcolor{red}{presentation.tex}
-
+	\textcolor{red}{modifié :         formation.tex}
+\Pause
 $ git stash
-Copie de travail et état de l'index sauvegardés dans WIP on local: 00938d6 Ajout diapo HEAD
-
+Copie de travail et état de l'index sauvegardés dans WIP on master: 9a7302c Second commit
+\Pause
 $ git status
-Sur la branche local
+Sur la branche master 
 rien à valider, la copie de travail est propre
 \end{Verbatim}
 	\end{beamercolorbox}
@@ -525,17 +539,32 @@ rien à valider, la copie de travail est propre
 		-- \enquote{Tranquille, git stash pop !}
 	\end{block}
 
+	\Pause
+
 	\verb+$ git stash pop+ : applique les modifications enregistrées par le \textbf{dernier} \verb+stash+ sur le working directory (attention aux conflits en cas de modifications qui se recoupent !)
 	\begin{beamercolorbox}[rounded=true,shadow=true]{terminal}
+\vspace{-\seplength}
 \begin{Verbatim}
 $ git stash pop
 Sur la branche master
 Modifications qui ne seront pas validées :
 
-	modifié :         \textcolor{red}{presentation.tex}
+	\textcolor{red}{modifié :         formation.txt}
 
 aucune modification n'a été ajoutée à la validation (utilisez "git add" ou "git commit -a")
-refs/stash@{0} supprimé (f3d4c84a8b3efc512785b30413dd4c3135e346b3)
+refs/stash@\{0\} supprimé (849fdcc28bb60b9196099a567958cd8408b599dc)
+	\end{Verbatim}
+	\end{beamercolorbox}
+
+	\Pause
+
+	Et pour faire bonne mesure...
+	\begin{beamercolorbox}[rounded=true,shadow=true]{terminal}
+\vspace{-\seplength}
+\begin{Verbatim}
+$ git add formation.txt
+
+$ git commit -m "travail en cours"
 \end{Verbatim}
 	\end{beamercolorbox}
 \end{frame}
@@ -548,52 +577,89 @@ refs/stash@{0} supprimé (f3d4c84a8b3efc512785b30413dd4c3135e346b3)
 	\end{block}
 
 	\begin{beamercolorbox}[rounded=true,shadow=true]{terminal}
+\vspace{-\seplength}
 \begin{Verbatim}
 $ git log
+* \textcolor{yellow}{commit 2624c90dbc8f28be29f7cbd8ea497eaef8832f44} (\textcolor{cyan}{HEAD} -> \textcolor{green}{master})
+\textcolor{red}{|} Author: Thibaud Duhautbout <thibaud@duhautbout.ovh>
+\textcolor{red}{|} Date:   Sun Sep 30 20:38:59 2018 +0200
+\textcolor{red}{|}
+\textcolor{red}{|}     travail en cours
+\textcolor{red}{|}
+* \textcolor{yellow}{commit 9a7302c06628ef69a5e1c9cebc2a1c2904e7d41f}
+\textcolor{red}{|} Author: Thibaud Duhautbout <thibaud@duhautbout.ovh>
+\textcolor{red}{|} Date:   Sun Sep 30 20:34:08 2018 +0200
+\textcolor{red}{|}
+\textcolor{red}{|}     Second commit \textcolor{red}{<--- C'est cette version-là qu'il veut !}
+\textcolor{red}{|}
+* \textcolor{yellow}{commit 6b6799b3209de6cb00c69b2afb490abb0f5481e9}
+  Author: Thibaud Duhautbout <thibaud@duhautbout.ovh>
+  Date:   Sat Sep 22 22:18:26 2018 +0200
+
+      Ajout du premier fichier
 \end{Verbatim}
 	\end{beamercolorbox}
-\end{frame}
 
-\begin{frame}[fragile]{Le HEAD}
 		\verb+HEAD+ = position actuelle du Working Directory dans le Repository
-
-		%TODO changer l'historique avec le repo de test
-	\begin{beamercolorbox}[rounded=true,shadow=true]{terminal}
-\begin{Verbatim}
-* \textcolor{yellow}{commit d1afac976a28cdda65aa3d1e91b50022cca26623} (\textcolor{cyan}{HEAD} -> \textcolor{green}{master}, \textcolor{red}{origin/master}, \textcolor{red}{origin/HEAD)}
-\textcolor{red}{|} Author: huetremy <remy.huet@etu.utc.fr>
-\textcolor{red}{|} Date:   Wed Sep 26 15:57:35 2018 +0200
-\textcolor{red}{|}
-\textcolor{red}{|}     Principe remote + git clone
-\textcolor{red}{|}
-* \textcolor{yellow}{commit 0f1e136f0d89c778c4ee4a598af11f1cd4630acf}
-\textcolor{red}{|} Author: huetremy <remy.huet@etu.utc.fr>
-\textcolor{red}{|} Date:   Mon Sep 24 13:15:10 2018 +0200
-\textcolor{red}{|}
-\textcolor{red}{|}     Update README
-\textcolor{red}{|}
-* \textcolor{yellow}{commit 3282f4f1d3a5cfcbc3a0307f423921c88281b572}
-\textcolor{red}{|} Author: huetremy <remy.huet@etu.utc.fr>
-\textcolor{red}{|} Date:   Mon Sep 24 11:51:12 2018 +0200
-\textcolor{red}{|}
-\textcolor{red}{|}     Correction git log, git diff
-\end{Verbatim}
-	\end{beamercolorbox}
 \end{frame}
 
 \begin{frame}[fragile]{Changer de version (suite)}
 	\verb+$ git checkout <sha commit>+ : rétablit le HEAD au commit indiqué
 
-	% TODO mettre les ids / messages qui vont bien
 	\begin{beamercolorbox}[rounded=true,shadow=true]{terminal}
 \begin{Verbatim}
-$ git checkout ...
+$ git checkout 9a7302c06628ef69a5e1c9cebc2a1c2904e7d41f \Pause
+Note : extraction de '9a7302c06628ef69a5e1c9cebc2a1c2904e7d41f'.
 
+Vous êtes dans l'état « HEAD détachée ». Vous pouvez visiter, faire des modifications
+expérimentales et les valider. Il vous suffit de faire une autre extraction pour
+abandonner les commits que vous faites dans cet état sans impacter les autres branches
+
+Si vous voulez créer une nouvelle branche pour conserver les commits que vous créez,
+il vous suffit d'utiliser « checkout -b » (maintenant ou plus tard) comme ceci :
+
+  git checkout -b <nom-de-la-nouvelle-branche>
+
+HEAD est maintenant sur 9a7302c Second commit
+\Pause
 $ git status
+\textcolor{red}{HEAD détachée} sur 9a7302c
+rien à valider, la copie de travail est propre
+\end{Verbatim}
+	\end{beamercolorbox}
+\end{frame}
 
-$ git log
-
+\begin{frame}[fragile]{Changer de version (suite)}
+	\begin{block}{}
+		\enquote{Et comment je reviens où j'étais avant ça ?}
+	\end{block}
+	\Pause
+	\begin{beamercolorbox}[rounded=true,shadow=true]{terminal}
+\begin{Verbatim}
 $ git checkout master
+La position précédente de HEAD était sur 9a7302c Second commit
+Basculement sur la branche 'master'
+\Pause
+$ git log --graph --all --decorate
+* \textcolor{yellow}{commit 2624c90dbc8f28be29f7cbd8ea497eaef8832f44} (\textcolor{cyan}{HEAD} -> \textcolor{green}{master})
+\textcolor{red}{|} Author: Thibaud Duhautbout <thibaud@duhautbout.ovh>
+\textcolor{red}{|} Date:   Sun Sep 30 20:38:59 2018 +0200
+\textcolor{red}{|}     travail en cours
+\textcolor{red}{|}
+* \textcolor{yellow}{commit 9a7302c06628ef69a5e1c9cebc2a1c2904e7d41f}
+\textcolor{red}{|} Author: Thibaud Duhautbout <thibaud@duhautbout.ovh>
+\textcolor{red}{|} Date:   Sun Sep 30 20:34:08 2018 +0200
+\textcolor{red}{|}     Second commit
+\textcolor{red}{|}
+* \textcolor{yellow}{commit 6b6799b3209de6cb00c69b2afb490abb0f5481e9}
+  Author: Thibaud Duhautbout <thibaud@duhautbout.ovh>
+  Date:   Sat Sep 22 22:18:26 2018 +0200
+      Ajout du premier fichier
+\Pause
+$ cat formation.txt
+J'apprends à utiliser git
+J’ajoute une ligne à mon fichier
+travail en cours...
 \end{Verbatim}
 	\end{beamercolorbox}
 \end{frame}
