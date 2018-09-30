@@ -575,7 +575,7 @@ rien à valider, la copie de travail est propre
 
 \subsection{Récupérer les ajouts distants}
 
-\begin{frame}[fragile]{git clone -- git pull}
+\begin{frame}[fragile]{git clone}
 	Récupération du repo de la présentation :
 	\begin{beamercolorbox}[rounded=true,shadow=true]{terminal}
 		\begin{Verbatim}
@@ -588,7 +588,6 @@ remote: Counting objects: 74, done.
 remote: Compressing objects: 100% (55/55), done.
 remote: Total 74 (delta 35), reused 40 (delta 16)
 Dépaquetage des objets: 100% (74/74), fait.\Pause
-
 $ cd git-v1 \Pause
 
 $ git status
@@ -598,6 +597,28 @@ Votre branche est à jour avec 'origin/master'.
 
 rien à valider, la copie de travail est propre
 		\end{Verbatim}
+	\end{beamercolorbox}
+\end{frame}
+
+\begin{frame}[fragile]{git pull}
+	Pour récupérer les modifications depuis le remote :
+	\begin{beamercolorbox}[rounded=true,shadow=true]{terminal}
+	\begin{Verbatim}
+$ git pull \Pause
+Username for 'https://gitlab.utc.fr':\Pause huetremy
+Password for 'https://huetremy@gitlab.utc.fr':\Pause 
+warning: redirection vers https://gitlab.utc.fr/picasoft/formations/a18/git-v1.git/
+remote: Counting objects: 3, done.
+remote: Compressing objects: 100% (3/3), done.
+remote: Total 3 (delta 2), reused 0 (delta 0)
+Dépaquetage des objets: 100% (3/3), fait.
+Depuis https://gitlab.utc.fr/picasoft/formations/a18/git-v1
+   00938d6..3f31ae0  master     -> origin/master
+Mise à jour 00938d6..3f31ae0
+Fast-forward
+ presentation.tex | 29 \textcolor{olive}{++++++++++++++++++++++++++++}\textcolor{red}{-}
+ 1 file changed, 28 insertions(+), 1 deletion(-)
+	\end{Verbatim}
 	\end{beamercolorbox}
 \end{frame}
 
