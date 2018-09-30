@@ -715,6 +715,7 @@ $ echo "ligne qui casse tout..." >> formation.txt
 
 \begin{frame}[fragile]{Annuler les modifications sur un fichier précis}
 	\begin{beamercolorbox}[rounded=true,shadow=true]{terminal}
+\vspace{-\seplength}
 \begin{Verbatim}
 $ git status
 Sur la branche master
@@ -767,7 +768,8 @@ travail en cours...
 	\enquote{Dis, il paraît qu'on peut récupérer le repo de la présentation, comment faire ?}
 	\end{block}
 	\begin{beamercolorbox}[rounded=true,shadow=true]{terminal}
-		\begin{Verbatim}
+		\vspace{-\seplength}
+\begin{Verbatim}
 $ git clone https://gitlab.utc.fr/picasoft/formations/A18/git-v1 \Pause
 Clonage dans 'git-v1'...
 Username for 'https://gitlab.utc.fr':\Pause{}huetremy \Pause
@@ -794,6 +796,7 @@ rien à valider, la copie de travail est propre
 		\enquote{Dis, comment je récupère tes modifications sur mon PC ? \\ -- T'as essayé git pull ? \\ --Ah, non...}
 	\end{block}
 	\begin{beamercolorbox}[rounded=true,shadow=true]{terminal}
+		\vspace{-\seplength}
 	\begin{Verbatim}
 $ git pull \Pause
 Username for 'https://gitlab.utc.fr':\Pause huetremy
@@ -820,6 +823,7 @@ Fast-forward
 		\enquote{Dis, comment je peux envoyer mes modifications vers la remote ? \\ -- Facile ! Tu utilises git push !}
 	\end{block}
 	\begin{beamercolorbox}[rounded=true,shadow=true]{terminal}
+		\vspace{-\seplength}
 		\begin{Verbatim}
 $ cd \Pause
 $ cd Documents \Pause
