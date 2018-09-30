@@ -492,10 +492,10 @@ index 951923e..bbbb145 100644
 \subsection{Enregistrer les modifications locales}
 
 \begin{frame}[fragile]{Enregistrer les modifications locales}
-	\begin{block}{Mise en situation}
-		\enquote{Tiens, tu pourrais m'envoyer le rapport ?} \\
-		\enquote{Euh, en fait je travaille dessus et j'ai changé tout l'ordre donc ça a pas trop de sens...} \\
-		\enquote{Bah fais un git stash !}
+	\begin{block}{}
+		-- \enquote{Tiens, tu pourrais m'envoyer le rapport ?} \\
+		-- \enquote{Euh, en fait je travaille dessus et j'ai changé tout l'ordre donc ça a pas trop de sens...} \\
+		-- \enquote{Bah fais un git stash !}
 	\end{block}
 
 	\verb+$ git stash+ : enregistre les modifications locales et restaure le working directory à l'état du dernier commit.
@@ -520,9 +520,9 @@ rien à valider, la copie de travail est propre
 \end{frame}
 
 \begin{frame}[fragile]{Restaurer les modifications enregistrées}
-	\begin{block}{Mise en situation (bis)}
-		\enquote{Eeeeeh mais je fais comment maintenant ?} \\
-		\enquote{Tranquille, git stash pop !}
+	\begin{block}{}
+		-- \enquote{Eeeeeh mais je fais comment maintenant ?} \\
+		-- \enquote{Tranquille, git stash pop !}
 	\end{block}
 
 	\verb+$ git stash pop+ : applique les modifications enregistrées par le \textbf{dernier} \verb+stash+ sur le working directory (attention aux conflits en cas de modifications qui se recoupent !)
