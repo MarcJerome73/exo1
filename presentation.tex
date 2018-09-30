@@ -504,7 +504,7 @@ index 951923e..bbbb145 100644
 	\begin{beamercolorbox}[rounded=true,shadow=true]{terminal}
 	\begin{Verbatim}
 $ git status
-Sur la branche master 
+Sur la branche master
 Modifications qui ne seront pas validées :
 
 	modifié :         \textcolor{red}{presentation.tex}
@@ -581,9 +581,41 @@ $ git log
 	\end{beamercolorbox}
 \end{frame}
 
+\begin{frame}[fragile]{Changer de version (suite)}
+	\verb+$ git checkout <sha commit>+ : rétablit le HEAD au commit indiqué
+
+	% TODO mettre les ids / messages qui vont bien
+	\begin{beamercolorbox}[rounded=true,shadow=true]{terminal}
+\begin{Verbatim}
+$ git checkout ...
+
+$ git status
+
+$ git log
+
+$ git checkout master
+\end{Verbatim}
+	\end{beamercolorbox}
+\end{frame}
+
 \subsection{Annuler les modifications sur un fichier précis}
 
-\begin{frame}{git checkout -- file}
+\begin{frame}[fragile]{Annuler les modifications sur un fichier particulier}
+	\begin{block}{}
+		\enquote{Je sais pas ce que j'ai fait, mais ce fichier il était bien avant que j'y touche... On peut revenir en arrière non ?}
+	\end{block}
+
+	\verb+$ git checkout -- <nom du fichier>+ : rétablit le fichier indiqué dans la version du dernier commit
+
+	\begin{beamercolorbox}[rounded=true,shadow=true]{terminal}
+\begin{Verbatim}
+$ git diff fichier_casse
+
+$ git checkout -- fichier_casse
+
+$ git status
+\end{Verbatim}
+	\end{beamercolorbox}
 \end{frame}
 
 \section{Les remotes}
@@ -632,7 +664,7 @@ rien à valider, la copie de travail est propre
 	\begin{Verbatim}
 $ git pull \Pause
 Username for 'https://gitlab.utc.fr':\Pause huetremy
-Password for 'https://huetremy@gitlab.utc.fr':\Pause 
+Password for 'https://huetremy@gitlab.utc.fr':\Pause
 warning: redirection vers https://gitlab.utc.fr/picasoft/formations/a18/git-v1.git/
 remote: Counting objects: 3, done.
 remote: Compressing objects: 100% (3/3), done.
