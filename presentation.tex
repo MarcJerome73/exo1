@@ -151,6 +151,8 @@ $ cd formation_git
 \end{Verbatim}
 \end{beamercolorbox}
 
+\Pause
+
 Configuration de l'identité de l'utilisateur :
 \begin{itemize}
 \item Permet d'identifier l'auteur des mises à jour \\
@@ -165,6 +167,8 @@ $ git config --global/local user.name "<prénom nom>"
 $ git config --global/local user.email "<adresse email>"
 \end{Verbatim}
 \end{beamercolorbox}
+
+\Pause
 
 Initialisation du repo git :
 \begin{beamercolorbox}[rounded=true,shadow=true]{terminal}
@@ -213,16 +217,15 @@ rien à valider (créez/copiez des fichiers et utilisez "git add" pour les suivr
 \end{Verbatim}
 	\end{beamercolorbox}
 
+	\Pause
+
 	On va créer un fichier !
 
 	\begin{beamercolorbox}[rounded=true,shadow=true]{terminal}
 \vspace{-\seplength}
 \begin{Verbatim}
 $ echo "J'apprends à utiliser git" > formation.txt
-\end{Verbatim}
 \Pause
-\vspace{-\seplength}
-\begin{Verbatim}
 $ git status
 Sur la branche master
 
@@ -423,24 +426,10 @@ Date:   Mon Sep 24 09:54:14 2018 +0200
 \begin{frame}[fragile]
 	\begin{beamercolorbox}[rounded=true,shadow=true]{terminal}
 \vspace{-\seplength}
-		\begin{Verbatim}
-$ echo "J'ajoute une ligne à mon fichier" >> formation.txt \Pause
+\begin{Verbatim}
+$ echo "J'ajoute une ligne à mon fichier" >> formation.txt
 
-$ git diff
-
-{\bf diff --git a/formation.txt b/formation.txt
-index 951923e..bbbb145 100644
---- a/formation.txt
-+++ b/formation.txt}
-\textcolor{cyan}{@@ -1 +1,2 @@}
- J'apprends à utiliser git
-\textcolor{myGreen}{+J'ajoute une ligne à mon fichier} \Pause
-
-$ git add formation.txt \Pause
-
-$ git diff \Pause
-
-$ git diff HEAD
+$\Pause git diff
 
 {\bf diff --git a/formation.txt b/formation.txt
 index 951923e..bbbb145 100644
@@ -448,9 +437,23 @@ index 951923e..bbbb145 100644
 +++ b/formation.txt}
 \textcolor{cyan}{@@ -1 +1,2 @@}
  J'apprends à utiliser git
-\textcolor{myGreen}{+J'ajoute une ligne à mon fichier} \Pause
+\textcolor{myGreen}{+J'ajoute une ligne à mon fichier}
 
-$ git commit -m "Second commit"
+$\Pause git add formation.txt
+
+$\Pause git diff
+
+$\Pause git diff HEAD
+
+{\bf diff --git a/formation.txt b/formation.txt
+index 951923e..bbbb145 100644
+--- a/formation.txt
++++ b/formation.txt}
+\textcolor{cyan}{@@ -1 +1,2 @@}
+ J'apprends à utiliser git
+\textcolor{myGreen}{+J'ajoute une ligne à mon fichier}
+
+$\Pause git commit -m "Second commit"
 
 [master e788cc0] Second commit
  1 file changed, 1 insertion(+)
@@ -475,9 +478,9 @@ Date:   Mon Sep 24 11:39:21 2018 +0200
 Author: huetremy <remy.huet@etu.utc.fr>
 Date:   Mon Sep 24 09:54:14 2018 +0200
 
-    Ajout du premier fichier \Pause
+    Ajout du premier fichier
 
-$ git diff 2487d e788c
+$\Pause git diff 2487d e788c
 
 {\bf diff --git a/formation.txt b/formation.txt
 index 951923e..bbbb145 100644
@@ -516,6 +519,8 @@ $ echo "travail en cours..." >> formation.txt
 
 	\verb+$ git stash+ : enregistre les modifications locales et restaure le working directory à l'état du dernier commit.
 
+	\Pause
+
 	\begin{beamercolorbox}[rounded=true,shadow=true]{terminal}
 \vspace{-\seplength}
 	\begin{Verbatim}
@@ -524,11 +529,11 @@ Sur la branche master
 Modifications qui ne seront pas validées :
 
 	\textcolor{red}{modifié :         formation.tex}
-\Pause
-$ git stash
+
+$\Pause git stash
 Copie de travail et état de l'index sauvegardés dans WIP on master: 9a7302c Second commit
-\Pause
-$ git status
+
+$\Pause git status
 Sur la branche master
 rien à valider, la copie de travail est propre
 \end{Verbatim}
@@ -578,6 +583,8 @@ $ git commit -m "travail en cours"
 		\enquote{Dis, t'aurais encore la version du projet qu'on a envoyé au prof la semaine dernière ?}
 	\end{block}
 
+	\Pause
+
 	\begin{beamercolorbox}[rounded=true,shadow=true]{terminal}
 \vspace{-\seplength}
 \begin{Verbatim}
@@ -618,16 +625,27 @@ Vous êtes dans l'état « HEAD détachée ». Vous pouvez visiter, faire des 
 expérimentales et les valider. Il vous suffit de faire une autre extraction pour
 abandonner les commits que vous faites dans cet état sans impacter les autres branches
 
-Si vous voulez créer une nouvelle branche pour conserver les commits que vous créez,
-il vous suffit d'utiliser « checkout -b » (maintenant ou plus tard) comme ceci :
-
-  git checkout -b <nom-de-la-nouvelle-branche>
+[...]
 
 HEAD est maintenant sur 9a7302c Second commit
-\Pause
-$ git status
+
+$\Pause git status
 \textcolor{red}{HEAD détachée} sur 9a7302c
 rien à valider, la copie de travail est propre
+
+$\Pause git log --graph --all
+* \textcolor{yellow}{commit 2624c90dbc8f28be29f7cbd8ea497eaef8832f44} (\textcolor{green}{master})
+\textcolor{red}{|} Author: Thibaud Duhautbout <thibaud@duhautbout.ovh>
+\textcolor{red}{|} Date:   Sun Sep 30 20:38:59 2018 +0200
+\textcolor{red}{|}     travail en cours
+* \textcolor{yellow}{commit 9a7302c06628ef69a5e1c9cebc2a1c2904e7d41f} (\textcolor{cyan}{HEAD})
+\textcolor{red}{|} Author: Thibaud Duhautbout <thibaud@duhautbout.ovh>
+\textcolor{red}{|} Date:   Sun Sep 30 20:34:08 2018 +0200
+\textcolor{red}{|}     Second commit
+* \textcolor{yellow}{commit 6b6799b3209de6cb00c69b2afb490abb0f5481e9}
+  Author: Thibaud Duhautbout <thibaud@duhautbout.ovh>
+  Date:   Sat Sep 22 22:18:26 2018 +0200
+      Ajout du premier fichier
 \end{Verbatim}
 	\end{beamercolorbox}
 \end{frame}
