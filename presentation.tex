@@ -63,7 +63,7 @@ pdfproducer={Latex},
 \begin{frame}
 	\frametitle{Question avant de commencer}
 	\begin{flushright}
-		{\it\enquote{Est-ce qu'on peut s'en servir pour donner de l'élan à un pigeon ?} \\ Yvain, chevalier au lion \\ Kaamelott}
+		{\it\enquote{Est-ce qu'on peut s'en servir pour donner de l'élan à un pigeon ?} \\ Yvain, chevalier au lion \\ Kaamelott Livre III ep. 95 L'Étudiant}
 	\end{flushright}
 \end{frame}
 
@@ -72,18 +72,18 @@ pdfproducer={Latex},
 \begin{frame}{Pourquoi la gestion de version ?}
 Pour tout le monde :
 \begin{itemize}
-\item sauvegarde incrémentale du travail
-\item suivi des modifications et retour en arrière
-\item partage des modifications avec d'autres personnes
+\item sauvegarde incrémentale du travail;
+\item suivi des modifications et retour en arrière;
+\item partage des modifications avec d'autres personnes.
 \end{itemize}
 
 \medskip
 
 Pour les développeurs :
 \begin{itemize}
-\item centralisation des sources
-\item collaboration simplifiée
-\item possibilité de maintenir plusieurs versions
+\item centralisation des sources;
+\item collaboration simplifiée;
+\item possibilité de maintenir plusieurs versions;
 \item ...
 \end{itemize}
 \end{frame}
@@ -112,11 +112,11 @@ Et plein d'autres !
 \end{center}
 
 \begin{itemize}
-\item Créé en 2005 par les développeurs du noyau Linux
-\item Système de gestion de version distribué
-\item Rapide
-\item Possibilité de développements non-linéaires (branches)
-\item Popularité grandissante chez les développeurs (GitHub, GitLab)
+\item Créé en 2005 par les développeurs du noyau Linux;
+\item Système de gestion de version distribué;
+\item Rapide;
+\item Possibilité de développements non-linéaires (branches);
+\item Popularité grandissante chez les développeurs (GitHub, GitLab).
 \end{itemize}
 \end{frame}
 
@@ -147,7 +147,7 @@ On ouvre un terminal ou Git Bash !
 
 \subsection{Configuration et initialisation}
 
-\begin{frame}[fragile]{Configuration de git et du repo}
+\begin{frame}[fragile]{Configuration de git et du dépôt}
 
 Création d'un nouveau répertoire de travail
 \begin{beamercolorbox}[rounded=true,shadow=true]{terminal}
@@ -162,9 +162,9 @@ $ cd formation_git
 
 Configuration de l'identité de l'utilisateur :
 \begin{itemize}
-\item Permet d'identifier l'auteur des mises à jour \\
-\item \verb+global+ : configuration au niveau du système \\
-\item \verb+local+ : configuration au niveau du répertoire courant
+\item Permet d'identifier l'auteur des mises à jour;
+\item \verb+global+ : configuration au niveau du système;
+\item \verb+local+ : configuration au niveau du répertoire courant.
 \end{itemize}
 
 \begin{beamercolorbox}[rounded=true,shadow=true]{terminal}
@@ -177,7 +177,7 @@ $ git config --global/local user.email "<adresse email>"
 
 \Pause
 
-Initialisation du repo git :
+Initialisation du dépôt git :
 \begin{beamercolorbox}[rounded=true,shadow=true]{terminal}
 \vspace{-\seplength}
 \begin{Verbatim}
@@ -197,10 +197,10 @@ Dépôt Git vide initialisé dans /home/user/project/.git/
 	\begin{block}{Utilité}
 		Permet de connaître à tout moment l'état d'un répertoire git :
 		\begin{itemize}
-			\item La branche sur laquelle on se situe
-			\item La divergence avec un repo distant
-			\item Les fichiers suivis ou non suivis
-			\item Les fichiers modifiés depuis la dernière validation
+			\item La branche sur laquelle on se situe;
+			\item La divergence avec un dépôt distant;
+			\item Les fichiers suivis ou non suivis;
+			\item Les fichiers modifiés depuis la dernière validation;
 			\item Les fichiers qui seront validés et ceux qui ne le seront pas.
 		\end{itemize}
 	\end{block}
@@ -257,31 +257,31 @@ aucune modification ajoutée à la validation mais des fichiers non suivis sont 
 
 Pour faire court :
 \begin{itemize}
-\item Commit = Validation
-\item Point de sauvegarde
-\item Ensemble de \textbf{modifications} depuis le dernier commit
+\item Commit = Validation;
+\item Point de sauvegarde;
+\item Ensemble de \textbf{modifications} depuis le dernier commit.
 \end{itemize}
 
 \bigskip
 
 \`A quoi ça sert ?
 \begin{itemize}
-\item Les commits se suivent
-\item Sauvegarde incrémentale
-\item Possibilité de revenir à une version donnée
+\item Les commits se suivent;
+\item Sauvegarde incrémentale;
+\item Possibilité de revenir à une version donnée.
 \end{itemize}
 \end{frame}
 
 \begin{frame}{Working Directory vs. Staging Area vs. Repository}
 	\begin{block}{Repository}
-		Le Repository correspond aux fichiers dans l'état de la dernière validation connue par git.
+		Le Repository (ou dépôt) correspond aux fichiers dans l'état de la dernière validation connue par git.
 	\end{block}
 
 	\begin{block}{Working Directory}
 		Le Working Directory correspond à l'état actuel du répertoire git :
 		\begin{itemize}
-			\item nouveaux fichiers pas encore ajoutés au Repository (fichiers non suivis)
-			\item fichiers modifiés depuis la dernière version
+			\item nouveaux fichiers pas encore ajoutés au Repository (fichiers non suivis);
+			\item fichiers modifiés depuis la dernière version.
 		\end{itemize}
 	\end{block}
 
@@ -389,8 +389,8 @@ $ git commit -m "Ajout du premier fichier"
 		\begin{itemize}
 			\item Chaque commit possède un identifiant unique;
 			\item Un commit est asocié à une unique personne;
-			\item L'historique des commits est incrémental. Tout commit (excepté le premier) a un commit "père"
-			\item Un commit correspond à une version figée du projet;
+			\item L'historique des commits est incrémental. Tout commit (excepté le premier) a un commit \enquote{père};
+			\item Un commit correspond à une version figée du projet.
 		\end{itemize}
 	\end{block}
 \end{frame}
@@ -413,15 +413,15 @@ Date:   Mon Sep 24 09:54:14 2018 +0200
 	\Pause
 	On peut voir ici : \Pause
 	\begin{itemize}
-		\item L'identifiant unique du commit \Pause
-		\item L'auteur (et son mail) \Pause
-		\item La date du commit \Pause
-		\item Le message qui a été mis lors du commit
+		\item L'identifiant unique du commit; \Pause
+		\item L'auteur (et son mail); \Pause
+		\item La date du commit; \Pause
+		\item Le message qui a été mis lors du commit.
 	\end{itemize}
 \end{frame}
 
 \begin{frame}[fragile]{git diff}
-	Permet de voir les modifications apportées au repo :
+	Permet de voir les modifications apportées au dépôt :
 	\begin{itemize}
 		\item Depuis l'état du staging area : \verb+$ git diff+;
 		\item Depuis le derier commit : \verb+$ git diff HEAD+;
@@ -757,14 +757,14 @@ travail en cours...
 
 \section{Les remotes}
 
-\subsection{Principe et application avec Gitlab}
+\subsection{Principe et application avec GitLab}
 
-\begin{frame}{Gitlab}
+\begin{frame}{GitLab}
 	\begin{block}{Principe}
-		Un repo git en ligne pour sauvegarder et partager le code. Les deux plus connus sont github et gitlab.
+		Un dépôt git en ligne pour sauvegarder et partager le code. Les deux plus connus sont github et GitLab.
 	\end{block}
 	\begin{block}{Application}
-		Création d'un repo sur gitlab
+		Création d'un dépôt sur GitLab
 	\end{block}
 \end{frame}
 
@@ -772,7 +772,7 @@ travail en cours...
 
 \begin{frame}[fragile]{git clone}
 	\begin{block}{}
-	\enquote{Dis, il paraît qu'on peut récupérer le repo de la présentation, comment faire ?}
+	\enquote{Dis, il paraît qu'on peut récupérer le dépôt de la présentation, comment faire ?}
 	\end{block}
 	\begin{beamercolorbox}[rounded=true,shadow=true]{terminal}
 		\vspace{-\seplength}
@@ -862,8 +862,8 @@ To https://gitlab.utc.fr/huetremy/picasoft-git.git/
 	Maintenant, vous savez :
 	\begin{itemize}
 		\item utiliser les fonctions basiques de git !
-		\item versionner un projet local
-		\item sauvegarder votre projet sur un Gitlab distant
+		\item versionner un projet local;
+		\item sauvegarder votre projet sur un GitLab distant !
 	\end{itemize}
 
 	\vfill
@@ -874,9 +874,9 @@ To https://gitlab.utc.fr/huetremy/picasoft-git.git/
 
 	La prochaine fois on verra :
 	\begin{itemize}
-		\item les branches
-		\item le merge, rebase et la joie des conflits
-		\item gestion plus fine des fichiers du repo
+		\item les branches;
+		\item le merge, rebase et la joie des conflits;
+		\item gestion plus fine des fichiers du dépôt.
 	\end{itemize}
 
 	\vfill
