@@ -70,21 +70,14 @@ pdfproducer={Latex},
 \section{Introduction}
 
 \begin{frame}{Pourquoi la gestion de version ?}
-Pour tout le monde :
-\begin{itemize}
-\item sauvegarde incrémentale du travail;
-\item suivi des modifications et retour en arrière;
-\item partage des modifications avec d'autres personnes.
-\end{itemize}
 
-\medskip
-
-Pour les développeurs :
 \begin{itemize}
-\item centralisation des sources;
-\item collaboration simplifiée;
-\item possibilité de maintenir plusieurs versions;
-\item ...
+\item sauvegarde incrémentale du travail
+\item suivi des modifications et retour en arrière
+\item partage des modifications avec d'autres personnes
+\item centralisation des sources
+\item collaboration simplifiée
+\item possibilité de maintenir plusieurs versions
 \end{itemize}
 \end{frame}
 
@@ -112,11 +105,11 @@ Et plein d'autres !
 \end{center}
 
 \begin{itemize}
-\item Créé en 2005 par les développeurs du noyau Linux;
-\item Système de gestion de version distribué;
-\item Rapide;
-\item Possibilité de développements non-linéaires (branches);
-\item Popularité grandissante chez les développeurs (GitHub, GitLab).
+\item Créé en 2005 par les développeurs du noyau Linux ;
+\item Système de gestion de version distribué ;
+\item Rapide ;
+\item Possibilité de développements non-linéaires (branches) ;
+\item Outil très populaire chez les développeurs (GitHub, GitLab, \ldots)
 \end{itemize}
 \end{frame}
 
@@ -197,10 +190,10 @@ Dépôt Git vide initialisé dans /home/user/formation_git/.git
 	\begin{block}{Utilité}
 		Permet de connaître à tout moment l'état d'un répertoire git :
 		\begin{itemize}
-			\item La branche sur laquelle on se situe;
-			\item La divergence avec un dépôt distant;
-			\item Les fichiers suivis ou non suivis;
-			\item Les fichiers modifiés depuis la dernière validation;
+			\item La branche sur laquelle on se situe ;
+			%\item La divergence avec un dépôt distant; % TD on garde ça pour plus tard je pense
+			\item Les fichiers suivis ou non suivis ;
+			\item Les fichiers modifiés depuis la dernière validation ;
 			\item Les fichiers qui seront validés et ceux qui ne le seront pas.
 		\end{itemize}
 	\end{block}
@@ -362,11 +355,12 @@ $ git add formation.txt
 \begin{frame}[fragile]{Valider les modifications}
 
 Valider les changements qui ont été ajoutés au staging area :\\
-\verb+$ git commit+.
+\verb+$ git commit+
 
 \medskip
 
-Le commit doit contenir un message. Pour l'entrer directement : \\
+Le commit doit contenir un message qui résume le contenu des modifications.
+Pour l'entrer directement : \\
 \verb+$ git commit -m "<message>"+ \\
 
 \bigskip
@@ -387,10 +381,11 @@ $ git commit -m "Ajout du premier fichier"
 \begin{frame}{Dissection d'un commit}
 	\begin{block}{À propos du commit}
 		\begin{itemize}
-			\item Chaque commit possède un identifiant unique;
-			\item Un commit est asocié à une unique personne;
-			\item L'historique des commits est incrémental. Tout commit (excepté le premier) a un commit \enquote{père};
-			\item Un commit correspond à une version figée du projet.
+			\item Chaque commit possède un identifiant unique ;
+			\item Un commit est asocié à une unique personne ;
+			\item L'historique des commits est incrémental. Tout commit (excepté le premier) a un commit \enquote{père} ;
+			\item Un commit correspond à une version figée du projet ;
+			\item On peut naviguer dans les commits.
 		\end{itemize}
 	\end{block}
 \end{frame}
@@ -424,7 +419,7 @@ Date:   Mon Sep 24 09:54:14 2018 +0200
 	Permet de voir les modifications apportées au dépôt :
 	\begin{itemize}
 		\item Depuis l'état du staging area : \verb+$ git diff+;
-		\item Depuis le derier commit : \verb+$ git diff HEAD+;
+		\item Depuis le dernier commit : \verb+$ git diff HEAD+;
 		\item Depuis un commit quelconque : \verb+$ git diff <id_commit>+;
 		\item Entre deux commits quelconques : \verb+$ git diff <id_commit_départ> <id_commit_arrivée>+.
 	\end{itemize}
@@ -496,7 +491,7 @@ index 951923e..bbbb145 100644
 \textcolor{cyan}{@@ -1 +1,2 @@}
  J'apprends à utiliser git
 \textcolor{myGreen}{+J'ajoute une ligne à mon fichier}
-    		
+
 		\end{Verbatim}
 	\end{beamercolorbox}
 \end{frame}
@@ -519,7 +514,7 @@ $ echo "travail en cours..." >> formation.txt
 	\begin{block}{}
 		-- \enquote{Tiens, tu pourrais m'envoyer le rapport ?} \\
 		\Pause
-		-- \enquote{Euh, en fait je travaille dessus et j'ai changé tout l'ordre donc ça a pas trop de sens...} \\
+		-- \enquote{Euh, en fait je travaille dessus et j'ai changé des choses\ldots} \\
 		\Pause
 		-- \enquote{Bah fais un git stash !}
 	\end{block}
@@ -590,31 +585,35 @@ $ git commit -m "travail en cours"
 		\enquote{Dis, t'aurais encore la version du projet qu'on a envoyé au prof la semaine dernière ?}
 	\end{block}
 
+	\vfill
+
 	\Pause
 
 	\begin{beamercolorbox}[rounded=true,shadow=true]{terminal}
 \vspace{-\seplength}
 \begin{Verbatim}
-$ git log --graph --all
-* \textcolor{yellow}{commit 2624c90dbc8f28be29f7cbd8ea497eaef8832f44} (\textcolor{cyan}{HEAD} -> \textcolor{green}{master})
-\textcolor{red}{|} Author: Thibaud Duhautbout <thibaud@duhautbout.ovh>
-\textcolor{red}{|} Date:   Sun Sep 30 20:38:59 2018 +0200
-\textcolor{red}{|}
-\textcolor{red}{|}     travail en cours
-\textcolor{red}{|}
-* \textcolor{yellow}{commit 9a7302c06628ef69a5e1c9cebc2a1c2904e7d41f}
-\textcolor{red}{|} Author: Thibaud Duhautbout <thibaud@duhautbout.ovh>
-\textcolor{red}{|} Date:   Sun Sep 30 20:34:08 2018 +0200
-\textcolor{red}{|}
-\textcolor{red}{|}     Second commit \textcolor{red}{<--- C'est cette version-là qu'il veut !}
-\textcolor{red}{|}
-* \textcolor{yellow}{commit 6b6799b3209de6cb00c69b2afb490abb0f5481e9}
-  Author: Thibaud Duhautbout <thibaud@duhautbout.ovh>
-  Date:   Sat Sep 22 22:18:26 2018 +0200
+$ git log
+\textcolor{yellow}{commit 2624c90dbc8f28be29f7cbd8ea497eaef8832f44} (\textcolor{cyan}{HEAD} -> \textcolor{green}{master})
+Author: Thibaud Duhautbout <thibaud@duhautbout.ovh>
+Date:   Sun Sep 30 20:38:59 2018 +0200
 
-      Ajout du premier fichier
+    travail en cours
+
+\textcolor{yellow}{commit 9a7302c06628ef69a5e1c9cebc2a1c2904e7d41f}
+Author: Thibaud Duhautbout <thibaud@duhautbout.ovh>
+Date:   Sun Sep 30 20:34:08 2018 +0200
+
+    Second commit \textcolor{red}{<--- C'est cette version-là qu'il veut !}
+
+\textcolor{yellow}{commit 6b6799b3209de6cb00c69b2afb490abb0f5481e9}
+Author: Thibaud Duhautbout <thibaud@duhautbout.ovh>
+Date:   Sat Sep 22 22:18:26 2018 +0200
+
+    Ajout du premier fichier
 \end{Verbatim}
 	\end{beamercolorbox}
+
+	\vfill
 
 		\verb+HEAD+ = position actuelle du Working Directory dans le Repository
 \end{frame}
@@ -622,10 +621,21 @@ $ git log --graph --all
 \begin{frame}[fragile]{Changer de version (suite)}
 	\verb+$ git checkout <sha commit>+ : rétablit le HEAD au commit indiqué
 
+	\vfill
+
+	\emph{Attention, l'identifiant du commit ne sera peut-être pas le même chez vous, pensez à le remplacer par celui qui est affiché dans votre log !}
+
+	\vfill
+
 	\begin{beamercolorbox}[rounded=true,shadow=true]{terminal}
 \vspace{-\seplength}
 \begin{Verbatim}
-$ git checkout 9a7302c06628ef69a5e1c9cebc2a1c2904e7d41f \Pause
+$ cat formation.txt
+J'apprends à utiliser git
+J’ajoute une ligne à mon fichier
+travail en cours...
+
+$\Pause git checkout 9a7302c06628ef69a5e1c9cebc2a1c2904e7d41f \Pause
 Note : extraction de '9a7302c06628ef69a5e1c9cebc2a1c2904e7d41f'.
 
 Vous êtes dans l'état « HEAD détachée ». Vous pouvez visiter, faire des modifications
@@ -635,24 +645,40 @@ abandonner les commits que vous faites dans cet état sans impacter les autres b
 [...]
 
 HEAD est maintenant sur 9a7302c Second commit
+\end{Verbatim}
+	\end{beamercolorbox}
+\end{frame}
 
-$\Pause git status
+\begin{frame}[fragile]{Changer de version (suite)}
+	\begin{beamercolorbox}[rounded=true,shadow=true]{terminal}
+		\vspace{-\seplength}
+\begin{Verbatim}
+$ git status
 \textcolor{red}{HEAD détachée} sur 9a7302c
 rien à valider, la copie de travail est propre
 
-$\Pause git log --graph --all
-* \textcolor{yellow}{commit 2624c90dbc8f28be29f7cbd8ea497eaef8832f44} (\textcolor{green}{master})
-\textcolor{red}{|} Author: Thibaud Duhautbout <thibaud@duhautbout.ovh>
-\textcolor{red}{|} Date:   Sun Sep 30 20:38:59 2018 +0200
-\textcolor{red}{|}     travail en cours
-* \textcolor{yellow}{commit 9a7302c06628ef69a5e1c9cebc2a1c2904e7d41f} (\textcolor{cyan}{HEAD})
-\textcolor{red}{|} Author: Thibaud Duhautbout <thibaud@duhautbout.ovh>
-\textcolor{red}{|} Date:   Sun Sep 30 20:34:08 2018 +0200
-\textcolor{red}{|}     Second commit
-* \textcolor{yellow}{commit 6b6799b3209de6cb00c69b2afb490abb0f5481e9}
-  Author: Thibaud Duhautbout <thibaud@duhautbout.ovh>
-  Date:   Sat Sep 22 22:18:26 2018 +0200
-      Ajout du premier fichier
+$\Pause cat formation.txt
+J'apprends à utiliser git
+J’ajoute une ligne à mon fichier
+
+$\Pause git log
+\textcolor{yellow}{commit 2624c90dbc8f28be29f7cbd8ea497eaef8832f44} (\textcolor{green}{master})
+Author: Thibaud Duhautbout <thibaud@duhautbout.ovh>
+Date:   Sun Sep 30 20:38:59 2018 +0200
+
+    travail en cours
+
+\textcolor{yellow}{commit 9a7302c06628ef69a5e1c9cebc2a1c2904e7d41f} (\textcolor{cyan}{HEAD})
+Author: Thibaud Duhautbout <thibaud@duhautbout.ovh>
+Date:   Sun Sep 30 20:34:08 2018 +0200
+
+    Second commit
+
+\textcolor{yellow}{commit 6b6799b3209de6cb00c69b2afb490abb0f5481e9}
+Author: Thibaud Duhautbout <thibaud@duhautbout.ovh>
+Date:   Sat Sep 22 22:18:26 2018 +0200
+
+    Ajout du premier fichier
 \end{Verbatim}
 	\end{beamercolorbox}
 \end{frame}
@@ -669,21 +695,21 @@ $ git checkout master
 La position précédente de HEAD était sur 9a7302c Second commit
 Basculement sur la branche 'master'
 \Pause
-$ git log --graph --all
-* \textcolor{yellow}{commit 2624c90dbc8f28be29f7cbd8ea497eaef8832f44} (\textcolor{cyan}{HEAD} -> \textcolor{green}{master})
-\textcolor{red}{|} Author: Thibaud Duhautbout <thibaud@duhautbout.ovh>
-\textcolor{red}{|} Date:   Sun Sep 30 20:38:59 2018 +0200
-\textcolor{red}{|}     travail en cours
-\textcolor{red}{|}
-* \textcolor{yellow}{commit 9a7302c06628ef69a5e1c9cebc2a1c2904e7d41f}
-\textcolor{red}{|} Author: Thibaud Duhautbout <thibaud@duhautbout.ovh>
-\textcolor{red}{|} Date:   Sun Sep 30 20:34:08 2018 +0200
-\textcolor{red}{|}     Second commit
-\textcolor{red}{|}
-* \textcolor{yellow}{commit 6b6799b3209de6cb00c69b2afb490abb0f5481e9}
-  Author: Thibaud Duhautbout <thibaud@duhautbout.ovh>
-  Date:   Sat Sep 22 22:18:26 2018 +0200
-      Ajout du premier fichier
+$ git log
+\textcolor{yellow}{commit 2624c90dbc8f28be29f7cbd8ea497eaef8832f44} (\textcolor{cyan}{HEAD} -> \textcolor{green}{master})
+Author: Thibaud Duhautbout <thibaud@duhautbout.ovh>
+Date:   Sun Sep 30 20:38:59 2018 +0200
+    travail en cours
+
+\textcolor{yellow}{commit 9a7302c06628ef69a5e1c9cebc2a1c2904e7d41f}
+Author: Thibaud Duhautbout <thibaud@duhautbout.ovh>
+Date:   Sun Sep 30 20:34:08 2018 +0200
+    Second commit
+
+\textcolor{yellow}{commit 6b6799b3209de6cb00c69b2afb490abb0f5481e9}
+Author: Thibaud Duhautbout <thibaud@duhautbout.ovh>
+Date:   Sat Sep 22 22:18:26 2018 +0200
+    Ajout du premier fichier
 \Pause
 $ cat formation.txt
 J'apprends à utiliser git
@@ -761,8 +787,11 @@ travail en cours...
 
 \begin{frame}{GitLab}
 	\begin{block}{Principe}
-		Un dépôt git en ligne pour sauvegarder et partager le code. Les deux plus connus sont GitHub et GitLab.
+		Un serveur git en ligne pour sauvegarder et partager des dépôts. Les deux plus connus sont GitHub et GitLab.
 	\end{block}
+
+	\bigskip
+
 	\begin{block}{Application}
 		Création d'un dépôt sur GitLab
 	\end{block}
@@ -786,6 +815,7 @@ remote: Counting objects: 74, done.
 remote: Compressing objects: 100% (55/55), done.
 remote: Total 74 (delta 35), reused 40 (delta 16)
 Dépaquetage des objets: 100% (74/74), fait.\Pause
+
 $ cd git-v1 \Pause
 
 $ git status
@@ -800,7 +830,9 @@ rien à valider, la copie de travail est propre
 
 \begin{frame}[fragile]{git pull}
 	\begin{block}{}
-		\enquote{Dis, comment je récupère tes modifications sur mon PC ? \\ -- T'as essayé git pull ? \\ --Ah, non...}
+		\enquote{Dis, comment je récupère tes modifications sur mon PC ? \\
+		-- T'as essayé git pull ? \\
+		-- Ah, non...}
 	\end{block}
 	\begin{beamercolorbox}[rounded=true,shadow=true]{terminal}
 		\vspace{-\seplength}
