@@ -153,6 +153,17 @@ $ cd formation_git
 
 \Pause
 
+Initialisation du dépôt git :
+\begin{beamercolorbox}[rounded=true,shadow=true]{terminal}
+\vspace{-\seplength}
+\begin{Verbatim}
+$ git init
+Dépôt Git vide initialisé dans /home/user/formation_git/.git
+\end{Verbatim}
+\end{beamercolorbox}
+
+\Pause
+
 Configuration de l'identité de l'utilisateur :
 \begin{itemize}
 \item Permet d'identifier l'auteur des mises à jour;
@@ -165,17 +176,6 @@ Configuration de l'identité de l'utilisateur :
 \begin{Verbatim}
 $ git config --global/local user.name "<prénom nom>"
 $ git config --global/local user.email "<adresse email>"
-\end{Verbatim}
-\end{beamercolorbox}
-
-\Pause
-
-Initialisation du dépôt git :
-\begin{beamercolorbox}[rounded=true,shadow=true]{terminal}
-\vspace{-\seplength}
-\begin{Verbatim}
-$ git init
-Dépôt Git vide initialisé dans /home/user/formation_git/.git
 \end{Verbatim}
 \end{beamercolorbox}
 
@@ -661,7 +661,7 @@ $\Pause cat formation.txt
 J'apprends à utiliser git
 J’ajoute une ligne à mon fichier
 
-$\Pause git log
+$\Pause git log --all
 \textcolor{yellow}{commit 2624c90dbc8f28be29f7cbd8ea497eaef8832f44} (\textcolor{green}{master})
 Author: Thibaud Duhautbout <thibaud@duhautbout.ovh>
 Date:   Sun Sep 30 20:38:59 2018 +0200
@@ -756,7 +756,7 @@ Modifications qui ne seront pas validées :
 
 	\textcolor{red}{modifié :         formation.txt}
 \Pause
-$ git diff fichier_casse
+$ git diff formation.txt
 diff --git a/formation.txt b/formation.txt
 index b1e9ea1..06fc038 100644
 --- a/formation.txt
@@ -808,8 +808,6 @@ travail en cours...
 \begin{Verbatim}
 $ git clone https://gitlab.utc.fr/picasoft/formations/A18/git-v1 \Pause
 Clonage dans 'git-v1'...
-Username for 'https://gitlab.utc.fr':\Pause{}huetremy \Pause
-Password for 'https://huetremy@gitlab.utc.fr': \Pause
 warning: redirection vers https://gitlab.utc.fr/picasoft/formations/A18/git-v1.git/
 remote: Counting objects: 74, done.
 remote: Compressing objects: 100% (55/55), done.
@@ -838,8 +836,6 @@ rien à valider, la copie de travail est propre
 		\vspace{-\seplength}
 	\begin{Verbatim}
 $ git pull \Pause
-Username for 'https://gitlab.utc.fr':\Pause huetremy
-Password for 'https://huetremy@gitlab.utc.fr':\Pause
 warning: redirection vers https://gitlab.utc.fr/picasoft/formations/a18/git-v1.git/
 remote: Counting objects: 3, done.
 remote: Compressing objects: 100% (3/3), done.
@@ -869,7 +865,7 @@ $ cd Documents \Pause
 $ git clone https://gitlab.utc.fr/mon_login/fomation-git\Pause
 ...
 $ cd formation-git\Pause
-$ echo "Hello World !" > text.txt\Pause
+$ echo "Hello World" > text.txt\Pause
 $ git add -A\Pause
 $ git commit -m "Ajout fichier text.txt"\Pause
 ...
