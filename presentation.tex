@@ -248,12 +248,9 @@ aucune modification ajoutée à la validation mais des fichiers non suivis sont 
 
 \begin{frame}{Un commit, c'est quoi ?}
 
-Pour faire court :
-\begin{itemize}
-\item Commit = Validation;
-\item Point de sauvegarde;
-\item Ensemble de \textbf{modifications} depuis le dernier commit.
-\end{itemize}
+	\begin{block}{Pour faire court}
+		Un commit est un \textbf{point de sauvegarde}
+	\end{block}
 
 \bigskip
 
@@ -266,11 +263,11 @@ Pour faire court :
 \end{frame}
 
 \begin{frame}{Working Directory vs. Staging Area vs. Repository}
-	\begin{block}{Repository}
+	\begin{block}{Repository [dépôt]}
 		Le Repository (ou dépôt) correspond aux fichiers dans l'état de la dernière validation connue par git.
 	\end{block}
 
-	\begin{block}{Working Directory}
+	\begin{block}{Working Directory [répertoire de travail]}
 		Le Working Directory correspond à l'état actuel du répertoire git :
 		\begin{itemize}
 			\item nouveaux fichiers pas encore ajoutés au Repository (fichiers non suivis);
@@ -278,7 +275,7 @@ Pour faire court :
 		\end{itemize}
 	\end{block}
 
-	\begin{block}{Staging Area (ou Index)}
+	\begin{block}{Staging Area [zone de préparation / zone d'index]}
 		Zone intermédiaire entre le Working Directory et le Repository.
 		Elle contient les modifications apportées dans le Working Directory que git va ajouter au Repository.
 	\end{block}
