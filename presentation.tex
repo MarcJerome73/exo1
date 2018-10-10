@@ -372,6 +372,22 @@ $ git commit -m "Ajout du premier fichier"
 \end{Verbatim}
 \end{beamercolorbox}
 
+\end{frame}
+
+\begin{frame}[fragile]{Guide de survie pour vim}
+	\textit{Si vous avez fait votre commit sans message, git ouvre un éditeur pour vous forcer à en écrire un. Si vous avez configuré un éditeur que vous connaissez, cette slide ne vous concerne pas. Si vous avez laissé l'éditeur par défaut (vim) et que vous ne le connaissez pas, suivez ces instructions attentivement.} 
+
+	Vim est un éditeur de texte \textbf{modal} (avec plusieurs modes). Le mode par défaut n'est pas un mode d'insertion, si vous essayez d'écrire du texte, ça ne va pas bien se passer ! 
+
+	Pour entrer le message de commit, utilisez la séquence suivante :
+	\begin{itemize}
+		\item appuyez sur la touche \verb+i+ pour entrer en mode édition
+		\item saisissez le message de commit en haut du fichier
+		\item appuyez sur \verb+Echap+ pour sortir du mode édition
+		\item tapez \verb+:wq<Entrée>+ pour enregistrer le message (\verb+w+) et quitter (\verb+q+) vim
+	\end{itemize}
+
+	Et en cas de besoin : \url{http://vimhelp.appspot.com}
 
 \end{frame}
 
@@ -479,7 +495,7 @@ Date:   Mon Sep 24 09:54:14 2018 +0200
 
     Ajout du premier fichier
 
-$\Pause git diff 2487d e788c
+$\Pause git diff 2487f e788c
 
 {\bf diff --git a/formation.txt b/formation.txt
 index 951923e..bbbb145 100644
@@ -616,7 +632,7 @@ Date:   Sat Sep 22 22:18:26 2018 +0200
 \end{frame}
 
 \begin{frame}[fragile]{Changer de version (suite)}
-	\verb+$ git checkout <sha commit>+ : rétablit le HEAD au commit indiqué
+	\verb+$ git checkout <id du commit>+ : rétablit le HEAD au commit indiqué
 
 	\vfill
 
